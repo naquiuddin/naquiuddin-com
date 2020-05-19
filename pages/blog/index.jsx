@@ -1,8 +1,15 @@
+import HomeLayout from "../../layouts/home";
+import { frontMatter as docsPages } from "./*.mdx";
+
 const Blog = () => {
   return (
-    <div>
-      <h1>This is Blog</h1>
-    </div>
+    <HomeLayout>
+      {docsPages.map(({ title, author }) => (
+        <h1>
+          {title} by {author}
+        </h1>
+      ))}
+    </HomeLayout>
   );
 };
 

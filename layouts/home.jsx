@@ -1,10 +1,12 @@
 import Nav from "../components/nav";
+import TelegramWidget from "../components/telegramWidget";
 
 const HomeLayout = ({ children }) => {
   return (
-    <div className="container">
+    <div>
       <Nav />
       {children}
+      <TelegramWidget/>
     </div>
   );
 };
