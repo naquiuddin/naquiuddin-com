@@ -1,0 +1,16 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.blob-bg {
+  background-image: url(/img/blob.svg), url(/img/blob-v.svg);
+  background-repeat: no-repeat;
+  background-position: 140px -8px;
+  // transform: rotateX(180deg);
+  width: 100%;
+  // img {
+  //   transform: rotateX(-180deg);
+  // }
+}
