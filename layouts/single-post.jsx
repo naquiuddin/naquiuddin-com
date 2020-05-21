@@ -1,8 +1,17 @@
 import Unsplash from "react-unsplash-wrapper";
 import HomeLayout from "./home";
-
-export default ({ title, author, publishedAt, excerpt }) => {
-  return ({ children: content, isUnsplash = true }) => {
+const dayjs = require("dayjs");
+const relativeTime = require("dayjs/plugin/relativeTime");
+dayjs.extend(relativeTime);
+export default ({
+  title,
+  author,
+  publishedAt,
+  excerpt,
+  photoId,
+  isUnsplash = true,
+}) => {
+  return ({ children: content }) => {
     return (
       <HomeLayout>
         <div className="flex flex-col">
@@ -11,7 +20,7 @@ export default ({ title, author, publishedAt, excerpt }) => {
               {title}
             </h1>
             <h3 className="mb-5 text-lg text-green-700 font-heading">
-              Written By {author} 3 days ago
+              Written By {author} {dayjs(publishedAt).fromNow()}
             </h3>
             <p className="my-4 text-2xl font-light text-gray-800 font-body">
               {excerpt}
@@ -23,13 +32,15 @@ export default ({ title, author, publishedAt, excerpt }) => {
               <Unsplash
                 height="400"
                 className="object-fill"
-                photoId={"WLUHO9A_xik"}
+                photoId={photoId}
               />
             ) : (
               <img className="object-fill" src="/img/" alt="" srcset="" />
             )}
           </div>
-          <article className="w-8/12 mx-auto font-body full-post">{content}</article>
+          <article className="w-8/12 mx-auto font-body full-post">
+            {content}
+          </article>
         </div>
       </HomeLayout>
     );
