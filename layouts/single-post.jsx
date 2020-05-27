@@ -28,15 +28,7 @@ export default ({
           </div>
 
           <div className="w-full mx-auto overflow-hidden ">
-            {isUnsplash ? (
-              <Unsplash
-                height="400"
-                className="object-fill"
-                photoId={photoId}
-              />
-            ) : (
-              <img className="object-fill" src="/img/" alt="" srcset="" />
-            )}
+            <Unsplash height="400" className="object-fill" photoId={photoId} />
           </div>
           <article className="w-8/12 mx-auto font-body full-post">
             {content}
