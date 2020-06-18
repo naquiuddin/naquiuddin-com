@@ -8,16 +8,17 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.1",
+    "@microlink/react": "^5.3.0",
     "@next/mdx": "^9.1.1",
-    "babel-plugin-import-glob-array": "^0.2.0",
+    "babel-plugin-macros": "^2.8.0",
     "dayjs": "^1.8.27",
     "next": "^9.4.2",
-    "next-mdx-enhanced": "^3.0.0",
     "next-optimized-images": "^2.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-unsplash-wrapper": "^1.1.5",
-    "sass": "^1.26.5"
+    "sass": "^1.26.5",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
@@ -33,6 +34,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
     "imagemin-svgo": "^7.1.0",
+    "import-all.macro": "^3.0.0",
     "jimp": "^0.12.1",
     "lqip-loader": "^2.2.0",
     "postcss-font-magician": "^2.3.1",

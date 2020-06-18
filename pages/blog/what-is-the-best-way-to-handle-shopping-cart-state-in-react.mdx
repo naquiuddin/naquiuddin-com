@@ -1,0 +1,168 @@
+import Layout from "../../layouts/single-post";
+
+export const metaData = {
+  layout: "single-post",
+  title: "What is the best way to handle shopping cart state in react",
+  author: "Khaja Naquiuddin",
+  publishedAt: "2019-07-07 00:00:00",
+  photoId: "2vW7uKqj2mI",
+  excerpt:
+    'A reddit user asked this: "I need to figure out best way to incorporate the cart. The functionality needs to satisfy 2 main things 1. Products can be added to the cart from any component 2. Any component can respond to cart updates (if it needs to)" He knows 2 options to accomplish this:',
+};
+
+export default ({ children }) => <Layout {...metaData}>{children}</Layout>;
+
+A reddit user asked this:
+
+> I need to figure out best way to incorporate the cart. The functionality needs
+> to satisfy 2 main things
+>
+> 1. Products can be added to the cart from any component
+> 2. Any component can respond to cart updates (if it needs to) He knows 2
+>    options to accomplish this:
+> 3. Maintain state and methods for interacting with API and pass it to sub
+>    components as props.
+> 4. Use Redux
+>
+> The first option is a way simpler but more tedious since I have to pass the
+> props into every component that needs it. Using Redux feels like overkill.
+
+The first option is now easier using the new **context api**. It is made to
+solve exactly this kind of use case. Let me explain you how to implement this
+using it.
+
+## What is Context
+
+[React's documentation](https://reactjs.org/docs/context.html) say this about
+**Context**:
+
+> Context provides a way to pass data through the component tree without having
+> to pass props down manually at every level.
+
+The docs also say
+
+> Context is designed to share data that can be considered global for a tree of
+> React components
+
+This means you can use context to maintain authenticated user details, user
+access permissions, theme configs etc.
+
+In our shopping cart's use case we need to keep shopping cart almost everywhere
+in an e-commerce website. We need to maintain its state and update it in
+whichever route we currently are. We also need this state and update function in
+for add to cart button component. Apart from these two places we also need to
+edit cart's products in checkout page. All these scenarios tell us that using
+**Context** is the right thing for this scenario.
+
+## How to use Context
+
+Context can simply be created like this, write code as given below:
+
+    const defaultCartState = {
+    	products: [],
+    	updateProducts: () => [],
+    }
+    const CartContext = React.CreateContext(defaultCartState);
+    export default CartContext;
+
+In above code I first created a default value for context. It has zero products
+that's why empty array and a function called `updateProducts` that just returns
+an empty array, which means it does nothing. You will soon see how I pass actual
+values and function into the context which we can reuse everywhere we need it.
+
+Now in order to use the CartContext for components deep inside a Container /
+Page component you have to wrap it with a _Context's Provider_ Component.
+
+Every context object comes with a Provider component. It makes the components
+that are children to it subscribe to changes made to the context, which means
+whenever you change your context value the provider automatically update its
+child components with the new changed value. Here is how you would use it. Let's
+say you need to read CartContext inside product listing page then you first wrap
+the Provider component to the parent component where you want to maintain the
+the cart state. It could be your Page or App component.
+
+    import React from "react";
+    import CartContext from "./cartContext";
+    import Home from "./pages/home";
+
+    const HomePage = (props) => {
+    	const [products, updateProducts] = useState([]);
+    	const CartState = {
+    		products,
+    		updateProducts
+    	}
+    	return (
+    		<CartContext.Provider value={CartState}>
+    			<Home />
+    		</CartContext.Provider>
+    	)
+    }
+
+    export default HomePage;
+
+In above code I imported CartContext and used `useState` that returns `products`
+array and a function `updateProducts` to update the same `products` array. I
+created an object using these values and passing it as value to CartContext
+Provider's value prop. This `CartState` object can be consumed wherever you use
+the context.
+
+Also in above code I am using `<Home/>` component. Inside it let's say I have 2
+components like `<Nav/>` and `<ProductsList/>`.
+
+- `<Nav/>` has `<Cart/>` component inside it and
+- `<ProductsList/>` that has `<AddToCart/>` button component inside.
+
+```
+import Nav from "../components/nav";
+import ProductsList from "../components/productsList";
+
+const Home = (props) => {
+    return (
+        <div>
+            <Nav />
+            <ProductsList />
+        </div>
+    );
+};
+
+export default Home;
+```
+
+Observe in the code above I am not passing any props related to cart in both
+components.
+
+Now let's say inside `<Nav/>` I have `<Cart/>` component that needs `CartState`
+from context. In order to use that I write the code as given below.
+
+```
+import React, { useContext } from "react";
+import Cart from "./cart";
+import CartContext from "../CartContext";
+const Nav = (props) => {
+const CartState = useContext(CartContext);
+    return (
+        <nav>
+            <NavLinks>
+            <Cart
+                products={cartState.products}
+                updateProducts= {cartState.}
+            />
+        </nav>
+    );
+}
+```
+
+I am using `useContext` hook and passing the `CartContext` into it, which
+returns the value `CartState` which we passed earlier in our `<Page/>`
+component.
+
+Now using the `products` array you can calculate total amount, count of products
+etc and whenever you remove a product you can add the update products using
+`updateProducts` function in `<Cart/>` component.
+
+Like above example we can pass products and updateProducts function to
+`<AddToProducts/>` component inside `<ProductsList/>` component.
+
+And because we are using `<Provider>` at the top level whenever the `products`
+array changes using `updateProducts()` inside the context the components that
+uses the context automatically updates.

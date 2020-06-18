@@ -43,7 +43,7 @@ const Home = (props) => {
           Skills
         </h1>
         <p className="w-3/5 pb-4 text-lg text-center font-body">
-          I understand and used the below given technologies in my various
+          I understand and used the below given technologies in various
           projects. The most prominent skills for me among all of them are React
           and JavaScript. I love writing maintainable, scalable, secure and
           testable code. One the reason businesses love to work with me is

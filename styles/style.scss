@@ -11,14 +11,14 @@
   }
 
   p {
-    @apply font-body my-4 font-light text-lg;
+    @apply font-body my-4 font-light text-xl;
   }
 
   a {
     @apply text-green-500;
   }
   blockquote {
-    @apply block p-4 bg-green-900 text-green-100 border-l-4 border-green-300 font-heading text-xl;
+    @apply block p-4 text-teal-900 border-l-4 border-teal-900 font-heading italic text-xl;
   }
 }
 
