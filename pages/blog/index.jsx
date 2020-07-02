@@ -37,7 +37,7 @@ const Blog = () => {
     <HomeLayout>
       <div className="flex flex-col justify-center py-12 mb-4 bg-teal-300 w-8-12 ">
         <h1 className="text-4xl text-center text-green-900 font-heading">
-          Khaja's Blog
+          Naqui's Blog
         </h1>
         <h2 className="text-2xl font-light text-center text-gray-900 font-heading">
           Teaching everything I learned to grow my career and make my life
