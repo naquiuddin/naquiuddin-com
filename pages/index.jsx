@@ -5,7 +5,7 @@ const Home = (props) => {
   return (
     <HomeLayout>
       <section className="flex flex-row py-8">
-        <div className="flex flex-col justify-center w-1/2 pl-16 pr-8">
+        <div className="flex flex-col justify-center w-full pl-16 pr-8 sm:w-1/2">
           <h1 className="text-5xl text-teal-900 font-heading">
             I'm Khaja Naquiuddin
           </h1>
@@ -17,7 +17,7 @@ const Home = (props) => {
             both startups and fortune 500s for the past 9 years
           </h2>
         </div>
-        <div className="flex justify-center w-1/2">
+        <div className="flex justify-center w-full sm:w-1/2">
           <div className="blob-bg">
             <img
               className="block mx-auto"
@@ -43,11 +43,11 @@ const Home = (props) => {
           Skills
         </h1>
         <p className="w-3/5 pb-4 text-lg text-center font-body">
-          I understand and used the below given technologies in various
+          I understand and have used the below given technologies in various
           projects. The most prominent skills for me among all of them are React
           and JavaScript. I love writing maintainable, scalable, secure and
           testable code. One the reason businesses love to work with me is
-          because of my coding skills.
+          because of my clean coding skills.
         </p>
         <div className="w-full my-2">
           <h2 className="w-full text-2xl text-center text-gray-100">
