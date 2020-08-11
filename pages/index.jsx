@@ -4,23 +4,23 @@ import HomeLayout from "../layouts/home";
 const Home = (props) => {
   return (
     <HomeLayout>
-      <section className="flex flex-row py-8">
-        <div className="flex flex-col justify-center w-full pl-16 pr-8 sm:w-1/2">
-          <h1 className="text-5xl text-teal-900 font-heading">
+      <section className="flex flex-row flex-wrap justify-between py-8">
+        <div className="flex flex-col justify-center pl-8 pr-8 md:pl-16 sm:w-1/2">
+          <h1 className="text-4xl text-teal-900 md:text-5xl font-heading">
             I'm Khaja Naquiuddin
           </h1>
-          <h1 className="py-2 text-3xl text-teal-800 font-heading">
-            A Senior Frontend Developer
+          <h1 className="py-2 text-2xl text-teal-800 md:text-3xl font-heading">
+            A Frontend Developer
           </h1>
-          <h2 className="py-2 text-xl text-teal-600 font-body">
-            I'm making secure, scalable and maintainable web applications for
-            both startups and fortune 500s for the past 9 years
+          <h2 className="py-2 text-lg text-teal-600 md:text-xl font-body">
+            Makes secure, scalable and maintainable web applications for both
+            startups and fortune 500s.
           </h2>
         </div>
         <div className="flex justify-center w-full sm:w-1/2">
           <div className="blob-bg">
             <img
-              className="block mx-auto"
+              className="block w-5/6 mx-auto"
               src="/img/smile-pic-enhanced.png"
               alt="Khaja Naquiuddin"
             />
@@ -29,20 +29,20 @@ const Home = (props) => {
       </section>
       <section className="flex flex-col items-center py-24 text-teal-900 bg-teal-300">
         <h1 className="py-4 text-4xl font-bold font-heading">About</h1>
-        <p className="w-1/2 text-lg text-center font-body">
-          A Senior Frontend Developer who has 9 years of experience in
-          developing scalable web applications. Worked with both startups and
-          Fortune 500's. Has strength on both ends of the stack and understands
-          dev-ops. Worked with both distributed and onsite teams and can easily
-          adapt to both small and large teams. Has experience in empower team
-          members to grow and contribute their best.
+        <p className="w-11/12 text-lg text-center sm:w-3/4 font-body">
+          A Frontend Developer who has 9 years of experience in developing
+          scalable web applications. Worked with both startups and Fortune
+          500's. Has strength on both ends of the stack and understands dev-ops.
+          Worked with both distributed and onsite teams and can easily adapt to
+          both small and large teams. Has experience in empowering team members
+          to grow and contribute their best.
         </p>
       </section>
-      <section className="flex flex-col items-center px-16 py-16 text-teal-200 bg-teal-900">
+      <section className="flex flex-col items-center py-16 text-teal-200 bg-teal-900 md:px-16">
         <h1 className="w-full py-4 text-4xl text-center text-gray-100 font-heading">
           Skills
         </h1>
-        <p className="w-3/5 pb-4 text-lg text-center font-body">
+        <p className="w-11/12 pb-4 text-lg text-center sm:w-3/4 font-body">
           I understand and have used the below given technologies in various
           projects. The most prominent skills for me among all of them are React
           and JavaScript. I love writing maintainable, scalable, secure and

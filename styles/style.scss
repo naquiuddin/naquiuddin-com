@@ -2,8 +2,6 @@
 
 @tailwind components;
 
-@tailwind utilities;
-
 .full-post {
   @apply mb-8;
   h2 {
@@ -25,7 +23,7 @@
 .blob-bg {
   background-image: url(/img/blob.svg), url(/img/blob-v.svg);
   background-repeat: no-repeat;
-  background-position: 140px -8px;
+  background-position: 95%;
   width: 100%;
 }
 
@@ -38,3 +36,9 @@
 .featured-image-container {
   height: 380px;
 }
+
+pre {
+  @apply overflow-x-scroll
+}
+
+@tailwind utilities;

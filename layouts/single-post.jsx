@@ -15,7 +15,7 @@ export default ({
   return (
     <HomeLayout>
       <div className="flex flex-col">
-        <div className="w-7/12 mx-auto">
+        <div className="w-11/12 mx-auto md:w-7/12">
           <h1 className="mt-5 mb-2 text-4xl font-bold text-green-900 font-heading">
             {title}
           </h1>
@@ -30,7 +30,7 @@ export default ({
         <div className="w-full mx-auto overflow-hidden ">
           <Unsplash height="400" className="object-fill" photoId={photoId} />
         </div>
-        <article className="w-7/12 mx-auto font-body full-post">
+        <article className="w-11/12 mx-auto sm:w-7/12 font-body full-post">
           {children}
         </article>
       </div>

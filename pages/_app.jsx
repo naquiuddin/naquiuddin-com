@@ -1,6 +1,7 @@
 // import App from 'next/app'
 
 import "../styles/style.scss";
+import 'prismjs/themes/prism.css';
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;

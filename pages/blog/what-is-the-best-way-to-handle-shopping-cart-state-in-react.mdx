@@ -58,12 +58,14 @@ edit cart's products in checkout page. All these scenarios tell us that using
 
 Context can simply be created like this, write code as given below:
 
-    const defaultCartState = {
-    	products: [],
-    	updateProducts: () => [],
-    }
-    const CartContext = React.CreateContext(defaultCartState);
-    export default CartContext;
+```js
+const defaultCartState = {
+  products: [],
+  updateProducts: () => [],
+};
+const CartContext = React.CreateContext(defaultCartState);
+export default CartContext;
+```
 
 In above code I first created a default value for context. It has zero products
 that's why empty array and a function called `updateProducts` that just returns
@@ -81,24 +83,25 @@ say you need to read CartContext inside product listing page then you first wrap
 the Provider component to the parent component where you want to maintain the
 the cart state. It could be your Page or App component.
 
-    import React from "react";
-    import CartContext from "./cartContext";
-    import Home from "./pages/home";
+```js
+import React from "react";
+import CartContext from "./cartContext";
+import Home from "./pages/home";
 
-    const HomePage = (props) => {
-    	const [products, updateProducts] = useState([]);
-    	const CartState = {
-    		products,
-    		updateProducts
-    	}
-    	return (
-    		<CartContext.Provider value={CartState}>
-    			<Home />
-    		</CartContext.Provider>
-    	)
-    }
-
-    export default HomePage;
+const HomePage = (props) => {
+  const [products, updateProducts] = useState([]);
+  const CartState = {
+    products,
+    updateProducts,
+  };
+  return (
+    <CartContext.Provider value={CartState}>
+      <Home />
+    </CartContext.Provider>
+  );
+};
+export default HomePage;
+```
 
 In above code I imported CartContext and used `useState` that returns `products`
 array and a function `updateProducts` to update the same `products` array. I
@@ -112,17 +115,17 @@ components like `<Nav/>` and `<ProductsList/>`.
 - `<Nav/>` has `<Cart/>` component inside it and
 - `<ProductsList/>` that has `<AddToCart/>` button component inside.
 
-```
+```jsx
 import Nav from "../components/nav";
 import ProductsList from "../components/productsList";
 
 const Home = (props) => {
-    return (
-        <div>
-            <Nav />
-            <ProductsList />
-        </div>
-    );
+  return (
+    <div>
+      <Nav />
+      <ProductsList />
+    </div>
+  );
 };
 
 export default Home;
@@ -134,15 +137,15 @@ components.
 Now let's say inside `<Nav/>` I have `<Cart/>` component that needs `CartState`
 from context. In order to use that I write the code as given below.
 
-```
+```jsx
 import React, { useContext } from "react";
 import Cart from "./cart";
 import CartContext from "../CartContext";
 const Nav = (props) => {
-const CartState = useContext(CartContext);
+    const CartState = useContext(CartContext);
     return (
         <nav>
-            <NavLinks>
+            <NavLinks />
             <Cart
                 products={cartState.products}
                 updateProducts= {cartState.}
